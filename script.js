@@ -153,3 +153,38 @@ updateMenuLogin();
     };
 
 });
+
+function showPage(pageId){
+
+    document.querySelectorAll(".page").forEach(page => {
+        page.classList.remove("active");
+    });
+
+    document.getElementById(pageId).classList.add("active");
+
+}
+
+const promoData = {
+    1: {
+        img: "assets/promo1.jpg",
+        title: "VIP BONUS 1 JT | DEPOSIT 100 RIBU",
+        desc: "Nikmati promo VIP Bonus 1 JT dengan minimal deposit 100 ribu. Promo berlaku untuk member yang memenuhi syarat dan ketentuan."
+    },
+
+    2: {
+        img: "assets/promo2.jpg",
+        title: "VIP BONUS 2 JT | DEPOSIT 200 RIBU",
+        desc: "Promo VIP Bonus 2 JT berlaku untuk deposit mulai dari 200 ribu dengan kesempatan bonus lebih besar."
+    }
+};
+
+function openPromoDetail(id){
+
+    const promo = promoData[id];
+
+    document.getElementById("detailImg").src = promo.img;
+    document.getElementById("detailTitle").innerText = promo.title;
+    document.getElementById("detailDesc").innerText = promo.desc;
+
+    showPage("promoDetailPage");
+}
