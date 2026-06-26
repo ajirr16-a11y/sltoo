@@ -1,51 +1,56 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Slot UI</title>
 
-<title>Premium Slot UI</title>
+    <!-- FONT -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
 
-<!-- FONT -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- ICON -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
 
-<!-- ICON -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-<!-- CSS -->
-<link rel="stylesheet" href="style.css">
-
-</head>
-
-<body>
-
-<!-- HEADER -->
-<div class="header">
-
-    <div class="left">
+  <body>
+    <!-- HEADER -->
+    <div class="header">
+      <div class="left">
         <div class="saldo">
-            Rp <span id="saldo">1.250.000</span>
-            <span class="refresh" onclick="updateSaldo()">⟳</span>
+          Rp <span id="saldo">1.250.000</span>
+          <span class="refresh" onclick="updateSaldo()">⟳</span>
         </div>
-    </div>
+      </div>
 
-    <div class="logo">
-        <img src="assets/logo.png" alt="logo">
-    </div>
+      <div class="logo">
+        <img src="assets/logo.png" alt="logo" />
+      </div>
 
-    <div class="right">
+      <div class="right">
         <button class="btn-daftar">Daftar</button>
         <div class="menu-btn">☰</div>
+      </div>
     </div>
-
-</div>
 
 <!-- SIDEBAR -->
 <div class="sidebar" id="sidebar">
 
     <div class="sidebar-header">
+
         <h3>Selamat Datang</h3>
+
+        <img src="assets/logo.png" class="sidebar-logo" alt="Logo">
+
         <p>Silakan Login atau Mendaftar</p>
 
         <div class="sidebar-btns">
@@ -54,162 +59,147 @@
         </div>
 
         <span class="forgot">Lupa Password?</span>
+
     </div>
 
-    <div class="sidebar-menu">
-        <div class="item">🏠 Home</div>
-        <div class="item">% Promosi</div>
-        <div class="item">⬇ Download Aplikasi</div>
-        <div class="item">📞 Kontak Kami</div>
-    </div>
+    <div class="sidebar-menu" id="sidebarMenu"></div>
 
 </div>
 
-<!-- OVERLAY -->
-<div class="overlay" id="overlay"></div>
+    <!-- OVERLAY -->
+    <div class="overlay" id="overlay"></div>
 
-<!-- SLIDER -->
-<div class="slider">
+    <!-- SLIDER -->
+    <div class="slider">
+      <div class="slides">
+        <img class="slide active" src="assets/poster1" />
+        <img class="slide" src="assets/poster2" />
+        <img class="slide" src="assets/poster3" />
+      </div>
 
-    <div class="slides">
-        <img class="slide active" src="assets/poster1">
-        <img class="slide" src="assets/poster2">
-        <img class="slide" src="assets/poster3">
-    </div>
+      <div class="slider-overlay"></div>
 
-    <div class="slider-overlay"></div>
-
-    <div class="dots">
+      <div class="dots">
         <span class="dot active"></span>
         <span class="dot"></span>
         <span class="dot"></span>
+      </div>
     </div>
 
-</div>
-
-<!-- JACKPOT -->
-<div class="jackpot">
-
-   <div class="jackpot-header">
+    <!-- JACKPOT -->
+    <div class="jackpot">
+      <div class="jackpot-header">
         <span class="jackpot-text">JACKPOT</span>
-   </div>
+      </div>
 
-    <div class="jackpot-frame">
-
+      <div class="jackpot-frame">
         <div class="stars top"></div>
 
         <div class="jackpot-value">
-            <span class="currency">IDR</span>
-            <span id="jackpot">49,296,928,623</span>
+          <span class="currency">IDR</span>
+          <span id="jackpot">49,296,928,623</span>
         </div>
 
         <div class="stars bottom"></div>
-
+      </div>
     </div>
 
-</div>
-
-<!-- MENU -->
-<div class="menu">
-
-    <div class="menu-item">
+    <!-- MENU -->
+    <div class="menu">
+      <div class="menu-item">
         <i class="fas fa-star"></i>
         <span>POPULAR</span>
-    </div>
+      </div>
 
-    <div class="menu-item">
+      <div class="menu-item">
         <i class="fas fa-dice"></i>
         <span>SLOT</span>
-    </div>
+      </div>
 
-    <div class="menu-item hot">
+      <div class="menu-item hot">
         <i class="fas fa-broadcast-tower"></i>
         <span>LIVE GAME</span>
-    </div>
+      </div>
 
-    <div class="menu-item">
+      <div class="menu-item">
         <i class="fas fa-coins"></i>
         <span>CASINO</span>
-    </div>
+      </div>
 
-    <div class="menu-item">
+      <div class="menu-item">
         <i class="fas fa-trophy"></i>
         <span>SPORT</span>
-    </div>
+      </div>
 
-    <div class="menu-item">
+      <div class="menu-item">
         <i class="fas fa-ticket-alt"></i>
         <span>LOTTO</span>
-    </div>
+      </div>
 
-    <div class="menu-item">
+      <div class="menu-item">
         <i class="fas fa-heart"></i>
         <span>POKER</span>
-    </div>
+      </div>
 
-    <div class="menu-item">
+      <div class="menu-item">
         <i class="fas fa-gamepad"></i>
         <span>ARCADE</span>
+      </div>
     </div>
 
-</div>
+    <!-- GAME -->
+    <div class="section">
+      <div class="section-title">🔥 Game Terpopuler</div>
 
-<!-- GAME -->
-<div class="section">
-    <div class="section-title">🔥 Game Terpopuler</div>
-
-    <div class="games">
+      <div class="games">
         <div class="game">
-            <img src="https://picsum.photos/200/200?4">
-            <span>Monkey Warrior</span>
+          <img src="https://picsum.photos/200/200?4" />
+          <span>Monkey Warrior</span>
         </div>
         <div class="game">
-            <img src="https://picsum.photos/200/200?5">
-            <span>Dog House</span>
+          <img src="https://picsum.photos/200/200?5" />
+          <span>Dog House</span>
         </div>
         <div class="game">
-            <img src="https://picsum.photos/200/200?6">
-            <span>Pirate Gold</span>
+          <img src="https://picsum.photos/200/200?6" />
+          <span>Pirate Gold</span>
         </div>
+      </div>
     </div>
-</div>
 
-<div class="navbar">
-
-    <div class="nav-item active">
+    <div class="navbar">
+      <div class="nav-item active">
         <i class="fas fa-home"></i>
         <span>Home</span>
-    </div>
+      </div>
 
-    <div class="nav-item">
-        <i class="fas fa-credit-card"></i>
-        <span>Deposit</span>
-    </div>
+      <div class="nav-item">
+    <i class="fab fa-android" id="depositIcon"></i>
+    <span id="depositText">App</span>
+</div>
 
-    <!-- CENTER -->
-    <div class="center-wrapper">
+      <!-- CENTER -->
+      <div class="center-wrapper">
         <div class="center-ring">
-            <div class="center-btn">
-                <i class="fas fa-user"></i>
-            </div>
+          <div class="center-btn">
+            <i class="fas fa-user"></i>
+          </div>
         </div>
         <span class="center-text">Permainan</span>
-    </div>
+      </div>
 
-    <div class="nav-item">
+      <div class="nav-item">
         <i class="fas fa-tags"></i>
         <span>Promosi</span>
-    </div>
+      </div>
 
-    <div class="nav-item">
+      <div class="nav-item">
         <i class="fas fa-comments"></i>
         <span>Live Chat</span>
+      </div>
     </div>
 
-</div>
-    
-<!-- JS -->
-<script src="script.js"></script>
-
-</body>
+    <!-- JS -->
+    <script src="script.js"></script>
+  </body>
 </html>
