@@ -42,7 +42,22 @@
       </div>
     </div>
 
-<!-- SIDEBAR -->
+    <!-- RUNNING TEXT -->
+<div class="running-text">
+    <div class="running-icon">
+        <i class="fas fa-bullhorn"></i>
+    </div>
+
+    <div class="running-track">
+        <div class="running-content">
+            PG4G | Selamat Datang di PASTI GACOR 4G Situs Paling Gacor, Terpercaya, dan Siap Memberikan Pengalaman Bermain Terbaik Setiap Hari 🏆 EVENT MENARIK SETIAP HARI
+        </div>
+    </div>
+
+    <div class="running-badge">PG4G</div>
+</div>
+
+  <!-- SIDEBAR -->
 <div class="sidebar" id="sidebar">
 
     <div class="sidebar-header">
@@ -69,6 +84,8 @@
     <!-- OVERLAY -->
     <div class="overlay" id="overlay"></div>
 
+    <div class="page active" id="homePage">
+
     <!-- SLIDER -->
     <div class="slider">
       <div class="slides">
@@ -86,23 +103,27 @@
       </div>
     </div>
 
-    <!-- JACKPOT -->
-    <div class="jackpot">
-      <div class="jackpot-header">
-        <span class="jackpot-text">JACKPOT</span>
-      </div>
+<!-- JACKPOT -->
+<div class="jackpot">
 
-      <div class="jackpot-frame">
+    <div class="jackpot-header">
+        <span class="jackpot-text">JACKPOT</span>
+    </div>
+
+    <div class="jackpot-frame">
         <div class="stars top"></div>
 
         <div class="jackpot-value">
-          <span class="currency">IDR</span>
-          <span id="jackpot">49,296,928,623</span>
+            <span class="currency">IDR</span>
+            <span id="jackpot">49,299,657,523</span>
         </div>
 
         <div class="stars bottom"></div>
-      </div>
     </div>
+
+    <div class="star-bottom">★★★★★</div>
+
+</div>
 
     <!-- MENU -->
     <div class="menu">
@@ -166,12 +187,59 @@
         </div>
       </div>
     </div>
+    </div>
 
+    <div class="page" id="promoPage">
+
+    <h2 class="promo-title">Promosi Terbaru</h2>
+
+    <div class="promo-tabs">
+        <button class="promo-tab active">All Promo</button>
+    </div>
+
+    <div class="promo-card">
+        <img src="assets/promo1.jpg" alt="Promo">
+
+        <div class="promo-info">
+            <span>VIP BONUS 1 JT | DEPOSIT 100 RIBU</span>
+            <button onclick="openPromoDetail(1)">Selengkapnya</button>
+        </div>
+    </div>
+
+    <div class="promo-card">
+        <img src="assets/promo2.jpg" alt="Promo">
+
+        <div class="promo-info">
+            <span>BONUS MEMBER BARU SETIAP HARI</span>
+            <button onclick="openPromoDetail(2)">Selengkapnya</button>
+        </div>
+    </div>
+
+</div>
+
+    <div class="page" id="promoDetailPage">
+
+    <div class="promo-detail-card">
+
+        <button class="back-btn" onclick="showPage('promoPage')">
+            ‹ Kembali
+        </button>
+
+        <img id="detailImg" class="promo-detail-img" src="" alt="Promo">
+
+        <h2 id="detailTitle"></h2>
+
+        <p id="detailDesc"></p>
+
+    </div>
+
+</div>
+    
     <div class="navbar">
-      <div class="nav-item active">
-        <i class="fas fa-home"></i>
-        <span>Home</span>
-      </div>
+      <div class="nav-item active" onclick="showPage('homePage')">
+    <i class="fas fa-home"></i>
+    <span>Home</span>
+</div>
 
       <div class="nav-item">
     <i class="fab fa-android" id="depositIcon"></i>
@@ -188,10 +256,10 @@
         <span class="center-text">Permainan</span>
       </div>
 
-      <div class="nav-item">
-        <i class="fas fa-tags"></i>
-        <span>Promosi</span>
-      </div>
+      <div class="nav-item" onclick="showPage('promoPage')">
+    <i class="fas fa-tags"></i>
+    <span>Promosi</span>
+</div>
 
       <div class="nav-item">
         <i class="fas fa-comments"></i>
