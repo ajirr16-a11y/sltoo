@@ -675,23 +675,35 @@ body {
 .navbar {
     position: fixed;
     bottom: 0;
+    left: 0;
     width: 100%;
-    height: 75px;
-    background: #0a1a3a;
+    height: 80px;
+
+    background: linear-gradient(
+        to top,
+        #0a1a3a 70%,
+        rgba(10,26,58,0.95)
+    );
 
     display: flex;
     justify-content: space-around;
-    align-items: center;
+    align-items: flex-end;
+
+    padding-bottom: 8px;
 
     z-index: 1000;
+
+    box-shadow: 0 -6px 20px rgba(0,0,0,0.6);
 }
 
-/* ITEM */
+/* ITEM NAV */
 .nav-item {
+    flex: 1;
+    text-align: center;
+
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
 
     font-size: 12px;
     color: #cfcfcf;
@@ -708,12 +720,12 @@ body {
     color: #f5c16c;
 }
 
-/* CENTER WRAPPER */
+/* CENTER WRAPPER (TOMBOL TENGAH) */
 .center-wrapper {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    top: -42px;
+    top: -48px;
 
     display: flex;
     flex-direction: column;
@@ -728,10 +740,9 @@ body {
 
     background: radial-gradient(
         circle,
-        rgba(255,210,120,0.25) 0%,
-        rgba(255,210,120,0.15) 40%,
-        rgba(255,210,120,0.05) 65%,
-        transparent 75%
+        rgba(255,210,120,0.25),
+        rgba(255,210,120,0.1),
+        transparent
     );
 
     display: flex;
@@ -739,55 +750,36 @@ body {
     justify-content: center;
 }
 
-/* BUTTON */
+/* BUTTON TENGAH */
 .center-btn {
     width: 72px;
     height: 72px;
     border-radius: 50%;
 
-    background: linear-gradient(
-        145deg,
-        #f7d08a 0%,
-        #e0a84f 45%,
-        #c98a2c 100%
-    );
+    background: linear-gradient(145deg, #f7d08a, #c98a2c);
 
     display: flex;
     align-items: center;
     justify-content: center;
 
+    border: 3px solid #0a1a3a;
+
     box-shadow:
         inset 0 3px 6px rgba(255,255,255,0.25),
         inset 0 -4px 8px rgba(0,0,0,0.25),
         0 8px 18px rgba(0,0,0,0.6);
-
-    border: 3px solid #0a1a3a;
 }
 
-/* ICON TENGAH */
+/* ICON CENTER */
 .center-btn i {
-    font-size: 30px;
+    font-size: 28px;
     color: #111;
 }
 
-/* TEXT */
+/* TEXT CENTER */
 .center-text {
     margin-top: 6px;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 600;
     color: #fff;
-}
-
-/* BAR BAWAH */
-.navbar::after {
-    content: "";
-    position: absolute;
-    bottom: 6px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 110px;
-    height: 4px;
-    border-radius: 10px;
-    background: #aaa;
-    opacity: 0.4;
 }
