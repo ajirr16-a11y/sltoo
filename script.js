@@ -10,6 +10,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const sidebar = document.getElementById("sidebar");
     const overlay = document.getElementById("overlay");
     const saldoEl = document.getElementById("saldo");
+const depositIcon = document.getElementById("depositIcon");
+const depositText = document.getElementById("depositText");
+const sidebarMenu = document.getElementById("sidebarMenu");
 
     // ==========================
     // SLIDER
@@ -83,6 +86,58 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
     }
+
+  // ==========================
+// MENU LOGIN
+// ==========================
+function updateMenuLogin(){
+
+    const isLogin = localStorage.getItem("isLogin") === "true";
+
+    if(isLogin){
+
+        depositIcon.className = "fas fa-credit-card";
+        depositText.innerText = "Deposit";
+
+        sidebarMenu.innerHTML = `
+            <div class="item">🏠 Home</div>
+            <div class="item">💳 Transaksi</div>
+            <div class="item">👤 Akun Saya</div>
+            <div class="item">🎁 Referral</div>
+            <div class="item">🏷 Promosi</div>
+            <div class="item" id="logoutBtn">🚪 Keluar</div>
+        `;
+
+        const logoutBtn = document.getElementById("logoutBtn");
+
+        logoutBtn.onclick = () => {
+
+            localStorage.removeItem("isLogin");
+
+            updateMenuLogin();
+
+            sidebar.classList.remove("active");
+            overlay.classList.remove("active");
+
+        };
+
+    }else{
+
+        depositIcon.className = "fab fa-android";
+        depositText.innerText = "App";
+
+        sidebarMenu.innerHTML = `
+            <div class="item">🏠 Home</div>
+            <div class="item">⬇ Download Aplikasi</div>
+            <div class="item">🏷 Promosi</div>
+            <div class="item">📞 Kontak Kami</div>
+        `;
+
+    }
+
+}
+
+updateMenuLogin();
 
     // ==========================
     // UPDATE SALDO
