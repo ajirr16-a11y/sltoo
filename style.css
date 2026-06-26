@@ -84,14 +84,13 @@ body {
 }
 
 /* =========================
-   LOGO TENGAH FIX
+   LOGO TENGAH PREMIUM ANIMATED
 ========================= */
 
 .logo{
     position:absolute;
     left:50%;
     top:50%;
-
     transform:translate(-50%,-50%);
 
     width:58px;
@@ -105,27 +104,65 @@ body {
     pointer-events:none;
 }
 
+.logo::before{
+    content:"";
+    position:absolute;
+    width:54px;
+    height:54px;
+    border-radius:50%;
+
+    background:radial-gradient(
+        circle,
+        rgba(255,215,0,.22),
+        transparent 68%
+    );
+
+    animation:logoGlow 2.2s ease-in-out infinite;
+}
+
 .logo img{
     width:42px;
     height:auto;
     max-width:100%;
-
     object-fit:contain;
 
     filter:
-        drop-shadow(0 0 4px rgba(255,215,0,.45))
-        drop-shadow(0 0 10px rgba(255,215,0,.25));
+        drop-shadow(0 0 5px rgba(255,215,0,.55))
+        drop-shadow(0 0 12px rgba(255,215,0,.28));
 
+    animation:logoFloat 2.8s ease-in-out infinite;
     transition:.25s ease;
+
+    position:relative;
+    z-index:2;
 }
 
-/* kalau logo dibungkus link */
 .logo a{
     pointer-events:auto;
 }
 
 .logo img:active{
     transform:scale(.95);
+}
+
+@keyframes logoFloat{
+    0%,100%{
+        transform:translateY(0) scale(1);
+    }
+    50%{
+        transform:translateY(-3px) scale(1.04);
+    }
+}
+
+@keyframes logoGlow{
+    0%,100%{
+        opacity:.45;
+        transform:scale(.9);
+    }
+    50%{
+        opacity:1;
+        transform:scale(1.18);
+    }
 }
 
 /* =========================
@@ -209,6 +246,148 @@ body {
 
 .btn-daftar:active{
     transform:scale(.96);
+}
+
+/* =========================
+   PREMIUM MARQUEE
+========================= */
+
+.running-text{
+    position:relative;
+
+    width:100%;
+    height:25px;
+
+    display:flex;
+    align-items:center;
+
+    overflow:hidden;
+
+    background:
+        linear-gradient(180deg,#fff0c7 0%,#f2bf6f 48%,#d08830 100%);
+
+    border-top:1px solid rgba(255,255,255,.35);
+    border-bottom:1px solid rgba(120,65,0,.45);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.35),
+        0 4px 10px rgba(0,0,0,.22);
+}
+
+.running-text::before{
+    content:"";
+    position:absolute;
+    inset:0;
+
+    background:linear-gradient(
+        180deg,
+        rgba(255,255,255,.20),
+        transparent 45%
+    );
+
+    pointer-events:none;
+}
+
+/* ICON */
+
+.running-icon{
+    width:38px;
+    height:100%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    flex-shrink:0;
+
+    border-right:1px solid rgba(255,255,255,.25);
+
+    background:rgba(255,255,255,.08);
+}
+
+.running-icon i{
+    font-size:13px;
+    color:#2f1a00;
+
+    animation:iconPulse 2s infinite;
+}
+
+/* TEXT */
+
+.running-track{
+    flex:1;
+    overflow:hidden;
+    white-space:nowrap;
+}
+
+.running-content{
+    display:inline-block;
+    padding-left:100%;
+
+    font-size:10px;
+    font-weight:700;
+    color:#2b1700;
+    letter-spacing:.2px;
+
+    text-shadow:0 1px 0 rgba(255,255,255,.35);
+
+    animation:runningText 18s linear infinite;
+}
+
+/* BADGE */
+
+.running-badge{
+    min-width:78px;
+    height:100%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    flex-shrink:0;
+
+    background:
+        linear-gradient(180deg,#ffe99b,#d9992f);
+
+    border-left:1px solid rgba(120,65,0,.35);
+
+    color:#5d2f00;
+    font-size:11px;
+    font-weight:900;
+    letter-spacing:.8px;
+
+    text-shadow:0 1px 0 rgba(255,255,255,.4);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.45);
+}
+
+/* =========================
+   ANIMATION
+========================= */
+
+@keyframes runningText{
+
+    from{
+        transform:translateX(0);
+    }
+
+    to{
+        transform:translateX(-100%);
+    }
+
+}
+
+@keyframes iconPulse{
+
+    0%,100%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.15);
+    }
+
 }
 
 /* =========================
@@ -609,327 +788,565 @@ body {
     box-shadow: 0 0 8px gold;
 }
 
-/* CONTAINER */
-.jackpot {
+/* =========================
+   JACKPOT CSS ONLY
+========================= */
+
+.jackpot{
+    position:relative;
     text-align:center;
-    margin:16px;
+    margin:36px 12px 12px;
 }
 
-/* ========================= */
-/* HEADER */
-/* ========================= */
-.jackpot-header {
-    text-align:center;
-    margin-bottom:0; /* dirapetin */
+.jackpot-header{
+    position:relative;
+    z-index:5;
+    margin-bottom:-14px;
 }
 
-.jackpot-text {
+.jackpot-text{
+    position:relative;
     display:inline-block;
-    transform: translateY(6px);
 
-    font-size:14px;
-    font-weight:700;
-    letter-spacing:3px;
+    padding:8px 42px 12px;
+    border-radius:42px 42px 14px 14px;
 
-    color:#ffd700;
-    text-transform:uppercase;
-
-    padding:4px 14px;
-    border-radius:12px;
-
-    background: linear-gradient(
+    background:linear-gradient(
         180deg,
-        rgba(255,215,0,0.15),
-        rgba(255,215,0,0.05)
+        #ff3434 0%,
+        #c40000 48%,
+        #700000 100%
     );
 
-    border:1px solid rgba(255,215,0,0.3);
+    border:3px solid #ffd36f;
+
+    color:#ffe45c;
+    font-size:32px;
+    font-weight:900;
+    line-height:1;
+    letter-spacing:2px;
 
     text-shadow:
-        0 0 6px rgba(255,215,0,0.6);
+        2px 2px 0 #7a0000,
+        0 0 8px rgba(255,255,255,.75),
+        0 0 16px rgba(255,215,0,.8);
 
     box-shadow:
-        0 0 8px rgba(255,215,0,0.3),
-        inset 0 0 6px rgba(255,255,255,0.1);
+        0 6px 0 #7a2600,
+        0 12px 22px rgba(0,0,0,.55),
+        inset 0 2px 0 rgba(255,255,255,.45),
+        0 0 22px rgba(255,215,0,.42);
 }
 
-/* ========================= */
-/* FRAME PREMIUM */
-/* ========================= */
-.jackpot-frame {
-    position:relative;
-    margin-top:4px; /* dirapetin */
-    padding:18px 12px;
-
-    border-radius:20px;
-
-    background: linear-gradient(180deg,#0c1f4a,#050d25);
-
-    border:1px solid rgba(255,215,0,0.25);
-
-    box-shadow:
-        0 10px 25px rgba(0,0,0,0.6),
-        0 0 15px rgba(255,215,0,0.15),
-        inset 0 1px 0 rgba(255,255,255,0.05);
-}
-
-/* subtle highlight */
-.jackpot-frame::before {
+/* sayap css */
+.jackpot-text::before,
+.jackpot-text::after{
     content:"";
     position:absolute;
-    inset:0;
-    border-radius:20px;
+    top:9px;
 
-    background: linear-gradient(
-        120deg,
-        transparent,
-        rgba(255,255,255,0.05),
-        transparent
+    width:48px;
+    height:26px;
+
+    background:linear-gradient(
+        135deg,
+        #ffd85c,
+        #d28a00
     );
 
+    border-radius:70% 20% 70% 20%;
+
+    box-shadow:
+        inset 0 2px 0 rgba(255,255,255,.45),
+        0 3px 0 #9b5700;
+
+    z-index:-1;
+}
+
+.jackpot-text::before{
+    left:-38px;
+    transform:rotate(-18deg);
+}
+
+.jackpot-text::after{
+    right:-38px;
+    transform:scaleX(-1) rotate(-18deg);
+}
+
+.jackpot-frame{
+    position:relative;
+    z-index:2;
+
+    padding:27px 14px;
+    border-radius:18px;
+
+    background:linear-gradient(
+        180deg,
+        #10264f 0%,
+        #081936 100%
+    );
+
+    border:2px solid #d9b37c;
+
+    box-shadow:
+        0 9px 20px rgba(0,0,0,.65),
+        inset 0 1px 0 rgba(255,255,255,.12),
+        inset 0 -8px 16px rgba(0,0,0,.32),
+        0 0 16px rgba(255,215,0,.2);
+}
+
+.jackpot-frame::before{
+    content:"";
+    position:absolute;
+    inset:6px;
+    border-radius:14px;
+    border:1px solid rgba(255,255,255,.08);
     pointer-events:none;
 }
 
-/* ========================= */
-/* BINTANG HALUS */
-/* ========================= */
-.stars {
-    position:absolute;
-    left:0;
-    width:100%;
-    height:8px;
-
-    background-image:
-        radial-gradient(rgba(255,215,0,0.9) 1.5px, transparent 2px),
-        radial-gradient(rgba(255,255,255,0.7) 1px, transparent 2px);
-
-    background-size: 18px 8px, 26px 8px;
-
-    animation: moveStars 6s linear infinite;
-    opacity:0.6;
-}
-
-.stars.top { top:6px; }
-.stars.bottom { bottom:6px; }
-
-@keyframes moveStars {
-    from { background-position: 0 0, 0 0; }
-    to { background-position: 60px 0, 90px 0; }
-}
-
-/* ========================= */
-/* VALUE */
-/* ========================= */
-.jackpot-value {
+.jackpot-value{
     display:flex;
     justify-content:center;
     align-items:center;
-    gap:10px;
+    gap:25px;
 }
 
-/* IDR */
-.currency {
-    color:#9aa3b2;
-    font-size:11px;
-    letter-spacing:3px;
-}
-
-/* ========================= */
-/* ANGKA */
-/* ========================= */
-#jackpot {
-    font-size:17px;
-    font-weight:600;
+.currency{
     color:#ffffff;
+    font-size:15px;
+    font-weight:700;
+    letter-spacing:9px;
+}
 
-    letter-spacing:4px;
+#jackpot{
+    color:#ffffff;
+    font-size:18px;
+    font-weight:700;
+    letter-spacing:7px;
 
     text-shadow:
-        0 0 6px rgba(255,255,255,0.3),
-        0 0 10px rgba(255,215,0,0.3);
+        0 0 8px rgba(255,255,255,.45),
+        0 0 14px rgba(255,215,0,.35);
 }
 
-.menu {
+/* bintang kecil */
+.stars{
+    position:absolute;
+    left:14px;
+    right:14px;
+    height:10px;
+
+    background-image:
+        radial-gradient(circle,#ffd700 45%,transparent 48%),
+        radial-gradient(circle,#ffffff 45%,transparent 48%);
+
+    background-size:20px 10px,20px 10px;
+    background-position:0 0,10px 0;
+
+    opacity:1;
+    animation:none;
+}
+
+.stars.top{
+    top:11px;
+}
+
+.stars.bottom{
+    bottom:11px;
+}
+
+/* 5 bintang besar */
+.star-bottom{
+    position:relative;
+    z-index:6;
+
+    margin-top:-3px;
+
+    color:#ffd700;
+    font-size:33px;
+    letter-spacing:7px;
+    line-height:1;
+
+    text-shadow:
+        0 3px 0 #a95d00,
+        0 6px 10px rgba(0,0,0,.45),
+        0 0 10px rgba(255,215,0,.8);
+}
+
+.menu{
     display:grid;
     grid-template-columns:repeat(4,1fr);
-    gap:12px;
-    padding:12px;
+    gap:8px;
+    padding:10px;
 }
 
-/* ITEM KOTAK */
-.menu-item {
+.menu-item{
     position:relative;
+    overflow:hidden;
+
+    aspect-ratio:1/0.88;
 
     display:flex;
     flex-direction:column;
     align-items:center;
     justify-content:center;
 
-    gap:8px;
-
-    /* BIKIN KOTAK */
-    aspect-ratio:1/1;
+    gap:6px;
 
     border-radius:16px;
 
-    /* GOLD CLEAN */
-    background:linear-gradient(180deg,#f5cf8a,#c7852c);
+    background:linear-gradient(
+        180deg,
+        #fff6d7 0%,
+        #f1c06c 48%,
+        #d4872f 100%
+    );
 
-    color:#111;
-    font-weight:700;
-    font-size:12px;
+    border:1px solid rgba(255,235,180,.9);
 
-    /* BORDER TIPIS */
-    border:1px solid rgba(255,215,0,0.5);
-
-    /* SHADOW SIMPLE */
     box-shadow:
-        0 4px 10px rgba(0,0,0,0.4),
-        inset 0 2px 4px rgba(255,255,255,0.3);
+        0 5px 12px rgba(0,0,0,.35),
+        inset 0 2px 0 rgba(255,255,255,.4),
+        inset 0 -4px 8px rgba(120,60,0,.15);
 
-    transition:0.15s;
+    transition:.18s;
 }
 
-/* ICON */
-.menu-item i,
-.poker-icon {
-    font-size:26px;
+.menu-item::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:40%;
+
+    background:linear-gradient(
+        180deg,
+        rgba(255,255,255,.35),
+        transparent
+    );
 }
 
-/* TEXT */
-.menu-item span {
-    letter-spacing:1px;
+.menu-item i{
+    font-size:30px;
+    color:#111;
 }
 
-/* EFFECT KLIK (RINGAN AJA) */
-.menu-item:active {
-    transform:scale(0.96);
+.menu-item span{
+    font-size:10px;
+    font-weight:800;
+    color:#111;
+    letter-spacing:.3px;
 }
 
-/* BADGE HOT */
-.menu-item.hot::after {
+.menu-item:active{
+    transform:scale(.96);
+}
+
+.menu-item.hot::after{
     content:"HOT";
 
     position:absolute;
     top:6px;
     right:6px;
 
-    font-size:9px;
-    font-weight:bold;
-
-    background:red;
-    color:white;
-
     padding:2px 6px;
-    border-radius:6px;
+
+    border-radius:999px;
+
+    background:linear-gradient(
+        180deg,
+        #ff4d4d,
+        #c40000
+    );
+
+    color:#fff;
+
+    font-size:7px;
+    font-weight:900;
+
+    line-height:1.2;
+
+    box-shadow:
+        0 2px 6px rgba(0,0,0,.35),
+        0 0 10px rgba(255,60,60,.6);
+
+    animation:hotBadge 1.2s ease-in-out infinite;
+
+    z-index:5;
 }
 
-/* SECTION TITLE */
-.section-title {
-    margin:10px;
-    padding:10px 12px;
+@keyframes hotBadge{
 
-    border-radius:10px;
+    0%{
+        transform:scale(1) rotate(0deg);
+    }
 
-    background:linear-gradient(90deg,#f5cf8a,#c7852c);
+    20%{
+        transform:scale(1.18) rotate(-8deg);
+    }
+
+    40%{
+        transform:scale(.96) rotate(8deg);
+    }
+
+    60%{
+        transform:scale(1.12) rotate(-5deg);
+    }
+
+    80%{
+        transform:scale(.98) rotate(5deg);
+    }
+
+    100%{
+        transform:scale(1) rotate(0deg);
+    }
+
+}
+
+/* =========================
+   SECTION TITLE
+========================= */
+
+.section-title{
+    margin:7px 10px 4px;
+    padding:9px 12px;
+
+    border-radius:13px;
+
+    background:
+        linear-gradient(135deg,#fff3d0 0%,#edbd70 48%,#b97024 100%);
+
     color:#111;
 
-    font-weight:700;
-    font-size:14px;
+    font-size:13px;
+    font-weight:900;
+    letter-spacing:.2px;
 
-    box-shadow:0 3px 8px rgba(0,0,0,0.4);
+    border:1px solid rgba(255,235,180,.9);
+
+    box-shadow:
+        0 4px 9px rgba(0,0,0,.38),
+        inset 0 1px 0 rgba(255,255,255,.5);
 }
 
-/* GRID */
-.games {
+/* =========================
+   GAME GRID
+========================= */
+
+.games{
     display:grid;
     grid-template-columns:repeat(3,1fr);
-    gap:12px;
-    padding:10px;
+    gap:8px;
+    padding:6px 10px 12px;
 }
 
-/* CARD */
-.game {
+.game{
     position:relative;
-    height:115px;
-
-    border-radius:14px;
     overflow:hidden;
 
-    /* BORDER HALUS */
-    border:1px solid rgba(255,215,0,0.4);
+    height:110px;
+    border-radius:14px;
 
-    /* SHADOW */
+    background:#0b1733;
+    border:1px solid rgba(255,215,120,.45);
+
     box-shadow:
-        0 6px 12px rgba(0,0,0,0.5);
+        0 5px 11px rgba(0,0,0,.45),
+        inset 0 1px 0 rgba(255,255,255,.08);
 
-    transition:0.2s;
+    transition:.18s ease;
 }
 
-/* IMAGE */
-.game img {
+.game img{
     width:100%;
     height:100%;
     object-fit:cover;
-
-    transition:0.3s;
+    display:block;
+    transition:.25s ease;
 }
 
-/* OVERLAY GRADIENT (BIAR LEBIH DALAM) */
-.game::after {
+.game::after{
     content:"";
     position:absolute;
     inset:0;
 
     background:linear-gradient(
         to top,
-        rgba(0,0,0,0.8),
-        rgba(0,0,0,0.2),
+        rgba(0,0,0,.86),
+        rgba(0,0,0,.25),
         transparent
     );
 }
 
-/* TITLE */
-.game span {
+.game span{
     position:absolute;
-    bottom:6px;
-    left:0;
-    width:100%;
-
-    font-size:12px;
-    font-weight:600;
-    text-align:center;
-
-    color:#fff;
+    left:5px;
+    right:5px;
+    bottom:7px;
     z-index:2;
 
-    text-shadow:0 2px 6px rgba(0,0,0,0.8);
+    color:#fff;
+    font-size:10px;
+    font-weight:800;
+    text-align:center;
+
+    text-shadow:0 2px 6px rgba(0,0,0,.9);
 }
 
-/* HOVER (RINGAN AJA) */
-.game:active {
-    transform:scale(0.96);
+.game:active{
+    transform:scale(.96);
 }
 
-/* OPTIONAL: EFFECT HALUS PAS SENTUH */
-.game:active img {
+.game:active img{
     transform:scale(1.05);
 }
 
-.game::before {
-    content:"";
-    position:absolute;
-    top:0;
-    left:-100%;
-    width:100%;
-    height:100%;
+/*PROMOSI*/
+.page{
+    display:none;
+}
 
-    background:linear-gradient(
-        120deg,
-        transparent,
-        rgba(255,255,255,0.25),
-        transparent
-    );
+.page.active{
+    display:block;
+}
+
+.promo-title{
+    margin:34px 0 22px;
+    text-align:center;
+
+    color:#e8b872;
+    font-size:28px;
+    font-weight:900;
+}
+
+.promo-tabs{
+    margin:0 14px 18px;
+}
+
+.promo-tab{
+    width:100%;
+    padding:14px;
+
+    border-radius:8px;
+    border:2px solid #e8b872;
+
+    background:#0b1b3a;
+    color:#fff;
+
+    font-size:15px;
+    font-weight:800;
+}
+
+.promo-card{
+    margin:0 14px 22px;
+
+    border-radius:9px;
+    overflow:hidden;
+
+    border:2px solid #e8b872;
+    background:#0b1b3a;
+
+    box-shadow:0 8px 18px rgba(0,0,0,.45);
+}
+
+.promo-card img{
+    width:100%;
+    height:190px;
+    object-fit:cover;
+    display:block;
+}
+
+.promo-info{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+
+    padding:12px 14px;
+
+    background:#0c1f42;
+}
+
+.promo-info span{
+    color:#fff;
+    font-size:13px;
+    font-weight:800;
+}
+
+.promo-info button{
+    padding:8px 14px;
+
+    border:none;
+    border-radius:6px;
+
+    background:linear-gradient(180deg,#ffe2a3,#d28a35);
+    color:#111;
+
+    font-size:12px;
+    font-weight:800;
+}
+
+/* =========================
+   PROMO DETAIL PAGE
+========================= */
+
+.promo-detail-card{
+    margin:72px 14px 28px;
+    padding:26px 18px;
+
+    border-radius:10px;
+
+    background:#0b1d3d;
+    border:2px solid #e8b872;
+
+    box-shadow:
+        0 8px 18px rgba(0,0,0,.45),
+        inset 0 1px 0 rgba(255,255,255,.08);
+}
+
+.back-btn{
+    margin-bottom:28px;
+    padding:10px 18px;
+
+    border:none;
+    border-radius:6px;
+
+    background:linear-gradient(180deg,#ffe0a0,#d28a35);
+    color:#111;
+
+    font-size:16px;
+    font-weight:900;
+
+    box-shadow:
+        0 4px 10px rgba(0,0,0,.35),
+        inset 0 1px 0 rgba(255,255,255,.45);
+}
+
+.promo-detail-img{
+    width:100%;
+    height:210px;
+    object-fit:cover;
+    display:block;
+
+    margin-bottom:22px;
+}
+
+.promo-detail-card h2{
+    color:#e8b872;
+    text-align:center;
+
+    font-size:22px;
+    font-weight:900;
+    line-height:1.4;
+
+    margin-bottom:26px;
+}
+
+.promo-detail-card p{
+    color:#fff;
+    font-size:14px;
+    line-height:1.7;
 }
 
 /* =========================
@@ -1051,13 +1468,13 @@ body {
 }
 
 /* =========================
-   CENTER BUTTON
+   CENTER BUTTON PREMIUM
 ========================= */
 
 .center-wrapper{
     position:absolute;
     left:50%;
-    bottom:8px; /* sebelumnya 20px */
+    bottom:8px;
 
     transform:translateX(-50%);
 
@@ -1068,33 +1485,74 @@ body {
     z-index:200;
 }
 
+/* Glow belakang */
+.center-wrapper::before{
+    content:"";
+    position:absolute;
+
+    top:-6px;
+
+    width:82px;
+    height:82px;
+
+    border-radius:50%;
+
+    background:radial-gradient(
+        circle,
+        rgba(255,215,0,.28),
+        transparent 70%
+    );
+
+    animation:centerGlow 2.6s ease-in-out infinite;
+}
+
+/* Ring luar */
 .center-ring{
-    width:74px;      /* sebelumnya 86px */
+    position:relative;
+
+    width:74px;
     height:74px;
 
     border-radius:50%;
 
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
     background:linear-gradient(
         180deg,
-        #f7d69a 0%,
-        #e3a85c 55%,
-        #c9832d 100%
+        #ffe9b9 0%,
+        #e8ae62 50%,
+        #c7812f 100%
     );
 
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    border:3px solid rgba(245,200,135,.95);
+    border:3px solid rgba(255,230,170,.95);
 
     box-shadow:
-        0 7px 14px rgba(0,0,0,.38),
-        inset 0 3px 5px rgba(255,255,255,.25),
-        inset 0 -4px 8px rgba(0,0,0,.18);
+        0 8px 18px rgba(0,0,0,.45),
+        inset 0 2px 4px rgba(255,255,255,.35),
+        inset 0 -5px 10px rgba(90,45,0,.25),
+        0 0 14px rgba(255,210,70,.35);
+
+    animation:centerFloat 2.8s ease-in-out infinite;
 }
 
+/* Ring mengkilap */
+.center-ring::before{
+    content:"";
+    position:absolute;
+    inset:3px;
+
+    border-radius:50%;
+
+    border:1px solid rgba(255,255,255,.22);
+
+    animation:ringRotate 8s linear infinite;
+}
+
+/* Tombol */
 .center-btn{
-    width:56px;      /* sebelumnya 64px */
+    width:56px;
     height:56px;
 
     border-radius:50%;
@@ -1103,27 +1561,99 @@ body {
     justify-content:center;
     align-items:center;
 
-    background:transparent;
+    background:linear-gradient(
+        180deg,
+        #fff4d7,
+        #f2c67d
+    );
+
+    box-shadow:
+        inset 0 2px 0 rgba(255,255,255,.55),
+        inset 0 -4px 6px rgba(160,90,0,.15);
+
+    z-index:2;
 }
 
+/* Icon */
 .center-btn i{
-    font-size:27px;  /* sebelumnya 31px */
-    color:#050505;
+    font-size:27px;
+    color:#222;
+
+    text-shadow:
+        0 1px 0 rgba(255,255,255,.5);
+
+    animation:iconPulse 2s ease-in-out infinite;
 }
 
+/* Text */
 .center-text{
-    margin-top:6px;
+    margin-top:7px;
 
-    color:#ffffff;
+    color:#fff;
 
-    font-size:13px;
-    font-weight:500;
-    line-height:1;
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:.3px;
+
+    text-shadow:0 2px 6px rgba(0,0,0,.45);
 }
-
 
 .center-btn:active{
     transform:scale(.94);
+}
+
+/* =========================
+   ANIMATION
+========================= */
+
+@keyframes centerFloat{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-4px);
+    }
+
+}
+
+@keyframes centerGlow{
+
+    0%,100%{
+        transform:scale(.92);
+        opacity:.45;
+    }
+
+    50%{
+        transform:scale(1.15);
+        opacity:.9;
+    }
+
+}
+
+@keyframes iconPulse{
+
+    0%,100%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.08);
+    }
+
+}
+
+@keyframes ringRotate{
+
+    from{
+        transform:rotate(0deg);
+    }
+
+    to{
+        transform:rotate(360deg);
+    }
+
 }
 
 /* =========================
