@@ -672,7 +672,7 @@ body {
 }
 
 /* =========================
-   BOTTOM NAVBAR
+   BOTTOM NAVBAR FIX
 ========================= */
 
 .navbar{
@@ -680,15 +680,15 @@ body {
     left:0;
     bottom:0;
     width:100%;
-    height:90px;
+    height:92px;
 
-    background:#132445;
+    background:#10213e;
 
     display:flex;
     justify-content:space-between;
     align-items:flex-end;
 
-    padding:0 18px 10px;
+    padding:0 18px 12px;
     box-sizing:border-box;
 
     box-shadow:0 -6px 18px rgba(0,0,0,.45);
@@ -697,27 +697,26 @@ body {
     overflow:visible;
 }
 
-/* Lekukan tengah */
+/* cekungan tengah */
 .navbar::before{
     content:"";
     position:absolute;
-
     left:50%;
-    top:-46px;
+    top:-38px;
+
+    width:104px;
+    height:104px;
 
     transform:translateX(-50%);
-
-    width:120px;
-    height:120px;
-
-    background:#132445;
     border-radius:50%;
+
+    background:#10213e;
 
     z-index:0;
 }
 
 /* =========================
-   ITEM
+   NAV ITEM
 ========================= */
 
 .nav-item{
@@ -728,44 +727,52 @@ body {
     align-items:center;
     justify-content:flex-end;
 
-    gap:5px;
+    gap:6px;
 
-    color:#ececec;
-    font-size:13px;
-    font-weight:500;
+    color:#ffffff;
 
     position:relative;
     z-index:5;
 
-    transition:.2s;
+    transition:.2s ease;
 }
 
 .nav-item i{
-    font-size:25px;
+    font-size:27px;
+    line-height:1;
 }
 
 .nav-item span{
-    font-size:13px;
+    font-size:14px;
+    font-weight:500;
+    line-height:1;
 }
 
 .nav-item.active{
-    color:#dca45f;
+    color:#dfa760;
 }
 
 .nav-item:active{
     transform:scale(.94);
 }
 
+/* kasih ruang tengah */
+.nav-item:nth-child(2){
+    margin-right:45px;
+}
+
+.nav-item:nth-child(4){
+    margin-left:45px;
+}
+
 /* =========================
-   CENTER
+   CENTER BUTTON
 ========================= */
 
 .center-wrapper{
-
     position:absolute;
-
     left:50%;
-    bottom:15px;
+    bottom:20px;
 
     transform:translateX(-50%);
 
@@ -776,81 +783,67 @@ body {
     z-index:20;
 }
 
-/* Ring luar */
-
 .center-ring{
-
-    width:102px;
-    height:102px;
+    width:86px;
+    height:86px;
 
     border-radius:50%;
 
     background:linear-gradient(
-    180deg,
-    #f7d79d,
-    #d79b52);
+        180deg,
+        #f7d69a 0%,
+        #e3a85c 55%,
+        #c9832d 100%
+    );
 
     display:flex;
-    justify-content:center;
     align-items:center;
+    justify-content:center;
+
+    border:3px solid rgba(245,200,135,.95);
 
     box-shadow:
-    0 10px 18px rgba(0,0,0,.35),
-    inset 0 3px 6px rgba(255,255,255,.25);
-
+        0 7px 14px rgba(0,0,0,.38),
+        inset 0 3px 5px rgba(255,255,255,.25),
+        inset 0 -4px 8px rgba(0,0,0,.18);
 }
 
-/* Tombol */
-
 .center-btn{
-
-    width:72px;
-    height:72px;
+    width:64px;
+    height:64px;
 
     border-radius:50%;
-
-    background:linear-gradient(
-    180deg,
-    #e8b46c,
-    #c7832b);
 
     display:flex;
     justify-content:center;
     align-items:center;
 
-    box-shadow:
-    inset 0 3px 6px rgba(255,255,255,.25),
-    inset 0 -4px 8px rgba(0,0,0,.25);
-
+    background:transparent;
 }
 
 .center-btn i{
-
-    font-size:30px;
-    color:#111;
-}
-
-.center-btn:active{
-
-    transform:scale(.94);
-
+    font-size:31px;
+    color:#050505;
 }
 
 .center-text{
+    margin-top:7px;
 
-    margin-top:6px;
+    color:#ffffff;
 
-    color:#fff;
+    font-size:14px;
+    font-weight:500;
+    line-height:1;
+}
 
-    font-size:13px;
-    font-weight:600;
-
+.center-btn:active{
+    transform:scale(.94);
 }
 
 /* =========================
-   SAFE AREA
+   BODY SPACE
 ========================= */
 
 body{
-    padding-bottom:95px;
+    padding-bottom:96px;
 }
