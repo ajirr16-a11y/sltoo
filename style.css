@@ -673,102 +673,121 @@ body {
 
 /* NAVBAR */
 .navbar {
-    position:fixed;
-    bottom:0;
-    width:100%;
-    height:85px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 75px;
+    background: #0a1a3a;
 
-    background:#0a1a3a;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 
-    display:flex;
-    justify-content:space-around;
-    align-items:flex-end;
-
-    padding-bottom:10px;
-
-    z-index:1000;
+    z-index: 1000;
 }
 
 /* ITEM */
 .nav-item {
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
-    font-size:12px;
-    color:#cfcfcf;
-    gap:5px;
+    font-size: 12px;
+    color: #cfcfcf;
+    gap: 4px;
 }
 
 /* ICON */
 .nav-item i {
-    font-size:22px;
+    font-size: 20px;
 }
 
 /* ACTIVE */
 .nav-item.active {
-    color:#f5c16c;
+    color: #f5c16c;
 }
 
 /* CENTER WRAPPER */
 .center-wrapper {
-    position:absolute;
-    bottom:15px;
-    left:50%;
-    transform:translateX(-50%);
-    text-align:center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -42px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-/* BUTTON TENGAH */
+/* RING LUAR */
+.center-ring {
+    width: 92px;
+    height: 92px;
+    border-radius: 50%;
+
+    background: radial-gradient(
+        circle,
+        rgba(255,210,120,0.25) 0%,
+        rgba(255,210,120,0.15) 40%,
+        rgba(255,210,120,0.05) 65%,
+        transparent 75%
+    );
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* BUTTON */
 .center-btn {
-    width:75px;
-    height:75px;
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
 
-    background:linear-gradient(145deg,#f5c16c,#c78b2a);
-    border-radius:50%;
+    background: linear-gradient(
+        145deg,
+        #f7d08a 0%,
+        #e0a84f 45%,
+        #c98a2c 100%
+    );
 
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     box-shadow:
-        0 8px 25px rgba(0,0,0,0.7),
-        0 0 15px rgba(255,215,0,0.5);
+        inset 0 3px 6px rgba(255,255,255,0.25),
+        inset 0 -4px 8px rgba(0,0,0,0.25),
+        0 8px 18px rgba(0,0,0,0.6);
 
-    border:4px solid #0a1a3a;
-
-    margin-bottom:5px;
+    border: 3px solid #0a1a3a;
 }
 
 /* ICON TENGAH */
 .center-btn i {
-    font-size:30px;
-    color:#111;
+    font-size: 30px;
+    color: #111;
 }
 
-/* TEXT TENGAH */
+/* TEXT */
 .center-text {
-    font-size:13px;
-    color:#fff;
-    font-weight:600;
+    margin-top: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #fff;
 }
 
-/* IPHONE BAR */
+/* BAR BAWAH */
 .navbar::after {
-    content:"";
-    position:absolute;
-    bottom:5px;
-    left:50%;
-    transform:translateX(-50%);
-    width:120px;
-    height:5px;
-    border-radius:10px;
-    background:#aaa;
-    opacity:0.5;
-}
-
-/* SAFE SPACE */
-body {
-    padding-bottom:110px;
+    content: "";
+    position: absolute;
+    bottom: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 110px;
+    height: 4px;
+    border-radius: 10px;
+    background: #aaa;
+    opacity: 0.4;
 }
