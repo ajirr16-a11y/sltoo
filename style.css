@@ -61,14 +61,32 @@ body {
 .logo {
     position:absolute;
     left:50%;
-    transform:translateX(-50%);
+    top:50%;
+    transform:translate(-50%, -50%);
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
 }
 
+/* GAMBAR LOGO */
 .logo img {
-    width:95px;
+    width:70px; /* diperkecil biar lebih balance */
+    max-width:100%;
+    height:auto;
+
+    object-fit:contain;
+
     filter:
-        drop-shadow(0 0 8px rgba(255,215,0,0.8))
-        drop-shadow(0 0 20px rgba(255,215,0,0.4));
+        drop-shadow(0 0 6px rgba(255,215,0,0.6))
+        drop-shadow(0 0 12px rgba(255,215,0,0.3));
+
+    transition:0.2s ease;
+}
+
+/* OPTIONAL: efek klik halus */
+.logo img:active {
+    transform:scale(0.95);
 }
 
 /* SALDO BOX (BIAR PREMIUM) */
