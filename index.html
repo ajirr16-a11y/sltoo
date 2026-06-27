@@ -37,7 +37,9 @@
       </div>
 
       <div class="right">
-        <button class="btn-daftar">Daftar</button>
+        <button class="btn-daftar" onclick="showPage('registerPage','register')">
+    Daftar
+</button>
         <div class="menu-btn">☰</div>
       </div>
     </div>
@@ -69,8 +71,12 @@
         <p>Silakan Login atau Mendaftar</p>
 
         <div class="sidebar-btns">
-            <button class="btn-login">Masuk</button>
-            <button class="btn-daftar">Daftar</button>
+            <button class="btn-login" onclick="showPage('loginPage','login')">
+    Masuk
+</button>
+            <button class="btn-daftar" onclick="showPage('registerPage','register')">
+    Daftar
+</button>
         </div>
 
         <span class="forgot">Lupa Password?</span>
@@ -103,25 +109,76 @@
       </div>
     </div>
 
-<!-- JACKPOT -->
-<div class="jackpot">
+<div class="server-card">
 
-    <div class="jackpot-header">
-        <span class="jackpot-text">JACKPOT</span>
+    <div class="server-top">
+        🌐 SERVER GACOR
     </div>
 
-    <div class="jackpot-frame">
-        <div class="stars top"></div>
-
-        <div class="jackpot-value">
-            <span class="currency">IDR</span>
-            <span id="jackpot">49,299,657,523</span>
-        </div>
-
-        <div class="stars bottom"></div>
+    <div id="serverName" class="server-name">
+        🇹🇭 Thailand Server
     </div>
 
-    <div class="star-bottom">★★★★★</div>
+    <div class="server-info">
+        <span id="serverStatus">🟢 Online</span>
+        <span id="serverPing">18 ms</span>
+    </div>
+
+    <button class="change-server"
+        onclick="openServer()">
+        UBAH SERVER
+    </button>
+
+</div>
+
+<div class="server-sheet" id="serverSheet">
+    <div class="server-sheet-box">
+
+        <h2>Pilih Server</h2>
+
+        <div onclick="changeServer('thailand')">🇹🇭 Thailand <span>18-35 ms</span></div>
+        <div onclick="changeServer('malaysia')">🇲🇾 Malaysia <span>20-38 ms</span></div>
+        <div onclick="changeServer('singapore')">🇸🇬 Singapore <span>12-25 ms</span></div>
+        <div onclick="changeServer('laos')">🇱🇦 Laos <span>25-45 ms</span></div>
+        <div onclick="changeServer('indonesia')">🇮🇩 Indonesia <span>15-30 ms</span></div>
+        <div onclick="changeServer('asia')">🌏 Asia Global <span>22-50 ms</span></div>
+
+    </div>
+</div>
+
+      <div class="loading-server"
+id="loadingServer">
+
+<div class="loading-box">
+
+<div class="loading-icon">
+
+🌐
+
+</div>
+
+<h3 id="loadingTitle">
+
+Menghubungkan...
+
+</h3>
+
+<div class="loading-bar">
+
+<div
+id="loadingProgress">
+
+</div>
+
+</div>
+
+<p id="loadingText">
+
+Mengoptimalkan koneksi...
+
+</p>
+
+</div>
 
 </div>
 
@@ -132,7 +189,7 @@
         <span>POPULAR</span>
       </div>
 
-      <div class="menu-item">
+      <div class="menu-item hot">
         <i class="fas fa-dice"></i>
         <span>SLOT</span>
       </div>
@@ -174,17 +231,41 @@
 
       <div class="games">
         <div class="game">
-          <img src="https://picsum.photos/200/200?4" />
-          <span>Monkey Warrior</span>
-        </div>
+          <img src="https://picsum.photos/200/200?4" />        <span>Monkey Warrior</span>
+          </div>
+        
         <div class="game">
-          <img src="https://picsum.photos/200/200?5" />
-          <span>Dog House</span>
-        </div>
+          <img src="https://picsum.photos/200/200?5" />        <span>Dog House</span>
+          </div>
+        
         <div class="game">
-          <img src="https://picsum.photos/200/200?6" />
-          <span>Pirate Gold</span>
+          <img src="https://picsum.photos/200/200?6" />        <span>Pirate Gold</span> 
         </div>
+
+        <div class="game">
+          <img src="https://picsum.photos/200/200?6" />        <span>Pirate Gold</span> 
+        </div>
+
+        <div class="game">
+          <img src="https://picsum.photos/200/200?6" />        <span>Pirate Gold</span> 
+        </div>
+
+        <div class="game">
+          <img src="https://picsum.photos/200/200?6" />        <span>Pirate Gold</span> 
+        </div>
+
+        <div class="game">
+          <img src="https://picsum.photos/200/200?6" />        <span>Pirate Gold</span> 
+        </div>
+
+        <div class="game">
+          <img src="https://picsum.photos/200/200?6" />        <span>Pirate Gold</span> 
+        </div>
+
+        <div class="game">
+          <img src="https://picsum.photos/200/200?6" />        <span>Pirate Gold</span> 
+        </div>
+        
       </div>
     </div>
     </div>
@@ -201,7 +282,7 @@
         <img src="assets/promo1.jpg" alt="Promo">
 
         <div class="promo-info">
-            <span>VIP BONUS 1 JT | DEPOSIT 100 RIBU</span>
+            <span>VIP BONUS 1JT | DEPOSIT 100RB - 599RBRB</span>
             <button onclick="openPromoDetail(1)">Selengkapnya</button>
         </div>
     </div>
@@ -210,9 +291,53 @@
         <img src="assets/promo2.jpg" alt="Promo">
 
         <div class="promo-info">
-            <span>BONUS MEMBER BARU SETIAP HARI</span>
+            <span>VIP BONUS 1,5JT | DEPOSIT 600RB - 999RB</span>
             <button onclick="openPromoDetail(2)">Selengkapnya</button>
         </div>
+    </div>
+
+      <div class="promo-card">
+        <img src="assets/promo3.jpg" alt="Promo">
+
+        <div class="promo-info">
+            <span>VIP BONUS 2JT | DEPOSIT 1JT - 1,9JT</span>
+            <button onclick="openPromoDetail(3)">Selengkapnya</button>
+        </div>
+    </div>
+
+      <div class="promo-card">
+        <img src="assets/promo4.jpg" alt="Promo">
+
+        <div class="promo-info">
+            <span>VIP BONUS 3JT | DEPOSIT 2JT - 3JT</span>
+            <button onclick="openPromoDetail(4)">Selengkapnya</button>
+        </div>
+    </div>
+
+</div>
+
+    <div class="page" id="appPage">
+
+    <div class="app-header">
+        <h2>Download Aplikasi</h2>
+        <p>Install aplikasi PG4G agar bermain lebih cepat dan nyaman.</p>
+    </div>
+
+    <div class="app-card">
+
+        <img src="assets/logo.png" class="app-logo">
+
+        <h3>PG4G Android</h3>
+
+        <p>
+            Versi Terbaru v2.0.1
+        </p>
+
+        <button class="download-btn">
+            <i class="fab fa-android"></i>
+            Download APK
+        </button>
+
     </div>
 
 </div>
@@ -234,38 +359,298 @@
     </div>
 
 </div>
+
+    <div class="page" id="chatPage">
+
+    <div class="chat-header">
+        <h2>Live Chat</h2>
+        <p>Customer Service Online 24 Jam</p>
+    </div>
+
+    <div class="chat-card">
+
+        <img src="assets/admin.png" class="chat-avatar">
+
+        <h3>Customer Service PG4G</h3>
+
+        <span class="online-status">
+            ● Online
+        </span>
+
+        <button class="chat-btn">
+            <i class="fab fa-whatsapp"></i>
+            Mulai Chat
+        </button>
+
+    </div>
+
+</div>
+
+    <div class="page" id="registerPage">
+
+    <div class="register-card">
+
+        <h2>👤 Daftar Akun Baru</h2>
+        <p class="register-subtitle">Bergabung bersama PG4G</p>
+
+        <div class="info-note">
+            <b>Informasi</b>
+            <span>Username 6-15 karakter, password minimal 8 karakter, gunakan nomor aktif.</span>
+        </div>
+
+        <label>Nama Pengguna</label>
+<div class="input-box">
+    <i class="fas fa-user"></i>
+    <input
+        id="regUsername"
+        type="text"
+        placeholder="Nama Pengguna">
+</div>
+
+<label>Kata Sandi</label>
+<div class="input-box password-box">
+    <i class="fas fa-lock"></i>
+    <input id="regPassword" type="password" placeholder="Kata Sandi">
+    <i class="fas fa-eye toggle-pass" onclick="togglePassword('regPassword', this)"></i>
+</div>
+
+<label>Konfirmasi Kata Sandi</label>
+<div class="input-box password-box">
+    <i class="fas fa-lock"></i>
+    <input id="regConfirm" type="password" placeholder="Konfirmasi Kata Sandi">
+    <i class="fas fa-eye toggle-pass" onclick="togglePassword('regConfirm', this)"></i>
+</div>
+
+<label>Email</label>
+<div class="input-box">
+    <i class="fas fa-envelope"></i>
+    <input
+        id="regEmail"
+        type="email"
+        placeholder="nama@domain.com">
+</div>
+
+<label>Nomor Ponsel</label>
+<div class="phone-box">
+    <span>+62</span>
+    <input
+        id="phoneInput"
+        type="tel"
+        placeholder="81234567890"
+        maxlength="13">
+</div>
+
+<label>Metode</label>
+
+<div class="method-tabs">
+
+    <button
+        type="button"
+        class="active"
+        onclick="setMethod('bank')">
+        🏦 BANK
+    </button>
+
+    <button
+        type="button"
+        onclick="setMethod('ewallet')">
+        💳 E-WALLET
+    </button>
+
+</div>
+
+<label id="methodLabel">
+    Pilih Bank
+</label>
+
+<div
+    class="custom-select"
+    onclick="togglePaymentList()">
+
+    <span id="paymentText">
+        -- Pilih Bank --
+    </span>
+
+    <i class="fas fa-chevron-down"></i>
+
+</div>
+
+<div
+    class="payment-list"
+    id="paymentList">
+</div>
+
+<label>Nama Pemilik Rekening</label>
+
+<div class="input-box">
+    <i class="fas fa-id-card"></i>
+    <input
+        id="regOwner"
+        type="text"
+        placeholder="Nama Sesuai Rekening">
+</div>
+
+<label>Nomor Rekening / E-Wallet</label>
+
+<div class="input-box">
+    <i class="fas fa-credit-card"></i>
+    <input
+        id="regRekening"
+        type="text"
+        placeholder="Nomor Rekening / E-Wallet">
+</div>
+
+<label>Kode Referral (Opsional)</label>
+
+<div class="input-box">
+    <i class="fas fa-gift"></i>
+    <input
+        id="regReferral"
+        type="text"
+        placeholder="Masukkan Kode Referral">
+</div>
+
+<label>Captcha</label>
+
+<div class="captcha-box">
+
+    <span id="captchaCode"></span>
+
+    <button
+        type="button"
+        onclick="generateCaptcha()">
+        ⟳
+    </button>
+
+</div>
+
+<div class="input-box">
+    <i class="fas fa-shield-alt"></i>
+
+    <input
+        id="captchaInput"
+        type="text"
+        placeholder="Masukkan Captcha">
+
+</div>
+
+<button
+    class="register-btn"
+    type="button"
+    onclick="submitRegister()">
+
+    DAFTAR SEKARANG
+
+</button>
+
+      <div id="toast" class="toast">
+
+    <div class="toast-icon" id="toastIcon">
+        <i class="fas fa-circle-exclamation"></i>
+    </div>
+
+    <div class="toast-content">
+
+        <div id="toastTitle" class="toast-title">
+            Peringatan
+        </div>
+
+        <div id="toastText" class="toast-text">
+            Isi pesan...
+        </div>
+
+    </div>
+
+</div>
+
+    </div>
+
+</div>
+
+    <div class="page" id="loginPage">
+
+    <div class="login-card">
+
+        <h2>🔐 Masuk Akun</h2>
+        <p class="login-subtitle">Silakan login untuk melanjutkan</p>
+
+        <div class="input-box">
+            <i class="fas fa-user"></i>
+            <input id="loginUser" type="text" placeholder="Username atau Nomor HP">
+        </div>
+
+<div class="input-box password-box">
+    <i class="fas fa-lock"></i>
+
+    <input
+        id="loginPassword"
+        type="password"
+        placeholder="Kata Sandi">
+
+    <i
+        class="fas fa-eye toggle-pass"
+        onclick="toggleLoginPassword()">
+    </i>
+</div>
+
+        <button class="login-btn" type="button" onclick="submitLogin()">
+    MASUK SEKARANG
+</button>
+
+        <p class="login-link">
+            Belum punya akun?
+            <span onclick="showPage('registerPage','register')">Daftar
+            </span>
+        </p>
+
+    </div>
+
+</div>
     
     <div class="navbar">
-      <div class="nav-item active" onclick="showPage('homePage')">
-    <i class="fas fa-home"></i>
-    <span>Home</span>
+
+    <div class="nav-item active" id="navHome" onclick="showPage('homePage','home')">
+        <i class="fas fa-home"></i>
+        <span>Home</span>
+    </div>
+
+    <div class="nav-item"
+     id="navApp"
+     onclick="showPage('appPage','app')">
+
+    <i class="fab fa-android"
+       id="depositIcon"></i>
+
+    <span id="depositText">
+        App
+    </span>
+
 </div>
 
-      <div class="nav-item">
-    <i class="fab fa-android" id="depositIcon"></i>
-    <span id="depositText">App</span>
-</div>
-
-      <!-- CENTER -->
-      <div class="center-wrapper">
+    <div class="center-wrapper" id="navGame" onclick="goToGames()">
         <div class="center-ring">
-          <div class="center-btn">
-            <i class="fas fa-user"></i>
-          </div>
+            <div class="center-btn">
+                <i class="fas fa-user"></i>
+            </div>
         </div>
         <span class="center-text">Permainan</span>
-      </div>
+    </div>
 
-      <div class="nav-item" onclick="showPage('promoPage')">
-    <i class="fas fa-tags"></i>
-    <span>Promosi</span>
+    <div class="nav-item" id="navPromo" onclick="showPage('promoPage','promo')">
+        <i class="fas fa-tags"></i>
+        <span>Promosi</span>
+    </div>
+
+    <div class="nav-item"
+     id="navChat"
+     onclick="showPage('chatPage','chat')">
+
+    <i class="fas fa-comments"></i>
+    <span>Live Chat</span>
+
 </div>
 
-      <div class="nav-item">
-        <i class="fas fa-comments"></i>
-        <span>Live Chat</span>
-      </div>
-    </div>
+</div>
 
     <!-- JS -->
     <script src="script.js"></script>
