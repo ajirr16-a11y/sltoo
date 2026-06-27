@@ -37,7 +37,10 @@
       </div>
 
       <div class="right">
-        <button class="btn-daftar" onclick="showPage('registerPage','register')">
+        <button
+class="btn-daftar"
+id="headerDaftarBtn"
+onclick="showPage('registerPage','register')">
     Daftar
 </button>
         <div class="menu-btn">☰</div>
@@ -68,18 +71,29 @@
 
         <img src="assets/logo.png" class="sidebar-logo" alt="Logo">
 
-        <p>Silakan Login atau Mendaftar</p>
+        <p id="sidebarWelcomeText">
+    Silakan Login atau Mendaftar
+</p>
 
         <div class="sidebar-btns">
-            <button class="btn-login" onclick="showPage('loginPage','login')">
+            <button
+class="btn-login"
+id="sidebarLoginBtn"
+onclick="showPage('loginPage','login')">
     Masuk
 </button>
-            <button class="btn-daftar" onclick="showPage('registerPage','register')">
+
+<button
+class="btn-daftar"
+id="sidebarDaftarBtn"
+onclick="showPage('registerPage','register')">
     Daftar
 </button>
         </div>
 
-        <span class="forgot">Lupa Password?</span>
+        <span class="forgot" id="forgotPassword">
+    Lupa Password?
+</span>
 
     </div>
 
