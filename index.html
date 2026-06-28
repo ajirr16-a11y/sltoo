@@ -197,48 +197,47 @@ Mengoptimalkan koneksi...
 </div>
 
     <!-- MENU -->
-    <div class="menu">
-      <div class="menu-item">
+<div class="menu">
+    <div class="menu-item" onclick="openGameMenu('popular')">
         <i class="fas fa-star"></i>
         <span>POPULAR</span>
-      </div>
-
-      <div class="menu-item hot">
-        <i class="fas fa-dice"></i>
-        <span>SLOT</span>
-      </div>
-
-      <div class="menu-item hot">
-        <i class="fas fa-broadcast-tower"></i>
-        <span>LIVE GAME</span>
-      </div>
-
-      <div class="menu-item">
-        <i class="fas fa-coins"></i>
-        <span>CASINO</span>
-      </div>
-
-      <div class="menu-item">
-        <i class="fas fa-trophy"></i>
-        <span>SPORT</span>
-      </div>
-
-      <div class="menu-item">
-        <i class="fas fa-ticket-alt"></i>
-        <span>LOTTO</span>
-      </div>
-
-      <div class="menu-item">
-        <i class="fas fa-heart"></i>
-        <span>POKER</span>
-      </div>
-
-      <div class="menu-item">
-        <i class="fas fa-gamepad"></i>
-        <span>ARCADE</span>
-      </div>
     </div>
 
+    <div class="menu-item hot" onclick="openGameMenu('slot')">
+        <i class="fas fa-dice"></i>
+        <span>SLOT</span>
+    </div>
+
+    <div class="menu-item hot" onclick="openGameMenu('live')">
+        <i class="fas fa-broadcast-tower"></i>
+        <span>LIVE GAME</span>
+    </div>
+
+    <div class="menu-item" onclick="openGameMenu('casino')">
+        <i class="fas fa-coins"></i>
+        <span>CASINO</span>
+    </div>
+
+    <div class="menu-item" onclick="openGameMenu('sport')">
+        <i class="fas fa-trophy"></i>
+        <span>SPORT</span>
+    </div>
+
+    <div class="menu-item" onclick="openGameMenu('lotto')">
+        <i class="fas fa-ticket-alt"></i>
+        <span>LOTTO</span>
+    </div>
+
+    <div class="menu-item" onclick="openGameMenu('poker')">
+        <i class="fas fa-heart"></i>
+        <span>POKER</span>
+    </div>
+
+    <div class="menu-item" onclick="openGameMenu('arcade')">
+        <i class="fas fa-gamepad"></i>
+        <span>ARCADE</span>
+    </div>
+</div>
     <!-- GAME -->
     <div class="section">
       <div class="section-title">🔥 Game Terpopuler</div>
@@ -283,6 +282,85 @@ Mengoptimalkan koneksi...
       </div>
     </div>
     </div>
+
+    <div class="page" id="slotPage">
+    <div class="slot-wrap">
+
+        <h2 class="slot-title">
+            <i class="fas fa-dice"></i>
+            Slot Provider
+        </h2>
+
+        <div class="slot-note">
+            Pilih provider slot yang tersedia.
+        </div>
+
+        <div class="slot-grid">
+
+            <div class="slot-provider" onclick="playSlotGame()">
+                <i class="fas fa-crown"></i>
+                <span>Pragmatic Play</span>
+            </div>
+
+            <div class="slot-provider" onclick="playSlotGame()">
+                <i class="fas fa-dragon"></i>
+                <span>PG Soft</span>
+            </div>
+
+            <div class="slot-provider" onclick="playSlotGame()">
+                <i class="fas fa-gem"></i>
+                <span>Habanero</span>
+            </div>
+
+            <div class="slot-provider" onclick="playSlotGame()">
+                <i class="fas fa-fire"></i>
+                <span>Spadegaming</span>
+            </div>
+
+            <div class="slot-provider" onclick="playSlotGame()">
+                <i class="fas fa-star"></i>
+                <span>Joker Gaming</span>
+            </div>
+
+            <div class="slot-provider" onclick="playSlotGame()">
+                <i class="fas fa-chess-rook"></i>
+                <span>Microgaming</span>
+            </div>
+
+            <div class="slot-provider" onclick="playSlotGame()">
+                <i class="fas fa-bolt"></i>
+                <span>Playtech</span>
+            </div>
+
+            <div class="slot-provider" onclick="playSlotGame()">
+                <i class="fas fa-coins"></i>
+                <span>CQ9</span>
+            </div>
+
+            <div class="slot-provider" onclick="playSlotGame()">
+                <i class="fas fa-clover"></i>
+                <span>Yggdrasil</span>
+            </div>
+
+            <div class="slot-provider" onclick="playSlotGame()">
+                <i class="fas fa-diamond"></i>
+                <span>Play’n GO</span>
+            </div>
+
+            <div class="slot-provider" onclick="playSlotGame()">
+                <i class="fas fa-gift"></i>
+                <span>RTG Slots</span>
+            </div>
+
+            <div class="slot-provider" onclick="playSlotGame()">
+                <i class="fas fa-circle-play"></i>
+                <span>Live22</span>
+            </div>
+
+        </div>
+
+    </div>
+</div>
 
     <div class="page" id="promoPage">
 
@@ -557,25 +635,7 @@ Mengoptimalkan koneksi...
 
 </button>
 
-      <div id="toast" class="toast">
-
-    <div class="toast-icon" id="toastIcon">
-        <i class="fas fa-circle-exclamation"></i>
-    </div>
-
-    <div class="toast-content">
-
-        <div id="toastTitle" class="toast-title">
-            Peringatan
-        </div>
-
-        <div id="toastText" class="toast-text">
-            Isi pesan...
-        </div>
-
-    </div>
-
-</div>
+      
 
     </div>
 
@@ -620,6 +680,172 @@ Mengoptimalkan koneksi...
     </div>
 
 </div>
+
+    <div class="page" id="depositPage">
+  <div class="deposit-wrap">
+
+    <div class="deposit-tabs">
+      <button class="active">
+        <i class="fas fa-wallet"></i>
+        Tambah Dana
+      </button>
+
+      <button onclick="openWithdrawPage()">
+    <i class="fas fa-coins"></i>
+    Tarik Dana
+</button>
+    </div>
+
+    <div class="deposit-card">
+
+      <h2>
+        <i class="fas fa-wallet"></i>
+        Formulir Deposit
+      </h2>
+
+      <div class="deposit-note">
+        Selalu pastikan data deposit sudah benar sebelum melanjutkan proses pembayaran.
+      </div>
+
+      <div class="wallet-box">
+        <span>Dompet Utama</span>
+        <b>IDR <span id="depositSaldo">0</span></b>
+      </div>
+
+      <label>Jumlah Deposit</label>
+      <input
+id="depositNominal"
+class="dep-input"
+type="text"
+placeholder="Rp 0">
+
+      <label>Pilih Bank</label>
+<div class="dep-select">
+    <div class="dep-selected" onclick="toggleDepList('bankListBox')">
+        <span id="depBankText">🏦 --- Pilih Bank ---</span>
+        <i class="fas fa-chevron-down"></i>
+    </div>
+
+    <div class="dep-list" id="bankListBox">
+        <div onclick="selectDepBank('BCA','🏦 BCA')">🏦 BCA</div>
+        <div onclick="selectDepBank('BRI','🏦 BRI')">🏦 BRI</div>
+        <div onclick="selectDepBank('MANDIRI','🏦 Mandiri')">🏦 Mandiri</div>
+        <div onclick="selectDepBank('BNI','🏦 BNI')">🏦 BNI</div>
+        <div onclick="selectDepBank('QRIS','💳 QRIS')">💳 QRIS</div>
+    </div>
+</div>
+
+<label>Pilih Bonus</label>
+<div class="dep-select">
+    <div class="dep-selected" onclick="toggleDepList('bonusListBox')">
+        <span id="depBonusText">🎁 Tanpa Bonus</span>
+        <i class="fas fa-chevron-down"></i>
+    </div>
+
+    <div class="dep-list" id="bonusListBox">
+        <div onclick="selectDepBonus('Tanpa Bonus','🎁 Tanpa Bonus')">🎁 Tanpa Bonus</div>
+        <div onclick="selectDepBonus('Bonus 10%','🎁 Bonus 10%')">🎁 Bonus 10%</div>
+        <div onclick="selectDepBonus('Bonus 20%','🎁 Bonus 20%')">🎁 Bonus 20%</div>
+    </div>
+</div>
+
+      <button class="dep-btn" onclick="goDepositProcess()">
+        Lanjutkan
+      </button>
+
+    </div>
+  </div>
+</div>
+
+<div class="page" id="depositProcessPage">
+  <div class="deposit-wrap">
+
+    <div class="deposit-card">
+
+      <button class="back-btn" onclick="showPage('depositPage','app')">
+        ‹ Kembali
+      </button>
+
+      <h2>
+        <i class="fas fa-receipt"></i>
+        Proses Pembayaran
+      </h2>
+
+      <div class="process-box">
+        <span>Nominal Transfer</span>
+        <b id="processAmount">IDR 0</b>
+      </div>
+
+      <div class="bank-detail" id="bankDetail"></div>
+
+      <div class="qris-area" id="qrisArea">
+        <p>Silakan scan QRIS berikut</p>
+        <img src="assets/qris.png" alt="QRIS">
+      </div>
+
+      <label>Keterangan</label>
+      <input id="depNote" class="dep-input" type="text" placeholder="Maksimal 100 karakter">
+
+      <label>Bukti Pembayaran</label>
+      <input id="depProof" class="file-input" type="file" accept="image/png,image/jpeg">
+
+      <button class="dep-btn" onclick="submitDepositProof()">
+        Kirim
+      </button>
+
+    </div>
+  </div>
+</div>
+
+    <div class="page" id="withdrawPage">
+    <div class="deposit-wrap">
+
+        <div class="deposit-tabs">
+            <button onclick="showPage('depositPage','app')">
+                <i class="fas fa-wallet"></i>
+                Tambah Dana
+            </button>
+
+            <button class="active">
+                <i class="fas fa-coins"></i>
+                Tarik Dana
+            </button>
+        </div>
+
+        <div class="deposit-card">
+
+            <h2>
+                <i class="fas fa-money-bill-transfer"></i>
+                Formulir Tarik Dana
+            </h2>
+
+            <div class="deposit-note">
+                Penarikan dana akan dikirim ke rekening atau e-wallet yang terdaftar saat registrasi.
+            </div>
+
+            <div class="wallet-box">
+                <span>Total Saldo Utama</span>
+                <b>IDR <span id="withdrawSaldo">0</span></b>
+            </div>
+
+            <div class="bank-detail" id="withdrawBankInfo">
+                Memuat data rekening...
+            </div>
+
+            <label>Nominal Tarik Dana</label>
+            <input
+                id="withdrawNominal"
+                class="dep-input"
+                type="text"
+                placeholder="Rp 0">
+
+            <button class="dep-btn" onclick="submitWithdraw()">
+                Ajukan Penarikan
+            </button>
+
+        </div>
+    </div>
+</div>
     
     <div class="navbar">
 
@@ -628,12 +854,11 @@ Mengoptimalkan koneksi...
         <span>Home</span>
     </div>
 
-    <div class="nav-item"
+<div class="nav-item"
      id="navApp"
-     onclick="showPage('appPage','app')">
+     onclick="handleAppDeposit()">
 
-    <i class="fab fa-android"
-       id="depositIcon"></i>
+    <i class="fab fa-android" id="depositIcon"></i>
 
     <span id="depositText">
         App
@@ -663,6 +888,26 @@ Mengoptimalkan koneksi...
     <span>Live Chat</span>
 
 </div>
+
+</div>
+
+    <div id="toast" class="toast">
+
+    <div class="toast-icon" id="toastIcon">
+        <i class="fas fa-circle-exclamation"></i>
+    </div>
+
+    <div class="toast-content">
+
+        <div id="toastTitle" class="toast-title">
+            Peringatan
+        </div>
+
+        <div id="toastText" class="toast-text">
+            Isi pesan...
+        </div>
+
+    </div>
 
 </div>
 
