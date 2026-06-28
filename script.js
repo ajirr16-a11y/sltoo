@@ -120,6 +120,18 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 150);
     };
 
+  window.handleAppDeposit = function(){
+
+    const isLogin = localStorage.getItem("isLogin") === "true";
+
+    if(isLogin){
+        showPage("depositPage","app");
+    }else{
+        showPage("appPage","app");
+    }
+
+};
+
     const promoData = {
         1: {
             img: "assets/promo1.jpg",
@@ -646,6 +658,319 @@ document.addEventListener("DOMContentLoaded", () => {
             showPage("homePage","home");
         }, 1000);
     };
+
+
+  const bankAccounts = {
+    BCA: {
+        bank: "BCA",
+        rekening: "1234567890",
+        nama: "PG4G OFFICIAL"
+    },
+    BRI: {
+        bank: "BRI",
+        rekening: "9876543210",
+        nama: "PG4G OFFICIAL"
+    },
+    MANDIRI: {
+        bank: "MANDIRI",
+        rekening: "1122334455",
+        nama: "PG4G OFFICIAL"
+    },
+    BNI: {
+        bank: "BNI",
+        rekening: "5566778899",
+        nama: "PG4G OFFICIAL"
+    }
+};
+
+window.goDepositProcess = function(){
+
+    const amountRaw =
+        document.getElementById("depositNominal").value.replace(/[^0-9]/g,"");
+
+    const amount = Number(amountRaw);
+    const bank = selectedDepBank;
+    const bonus = selectedDepBonus;
+
+    if(!amount || amount < 50000){
+        showToast("Nominal Tidak Valid","Minimal deposit Rp 50.000.","warning");
+        return;
+    }
+
+    if(!bank){
+        showToast("Bank Belum Dipilih","Silakan pilih bank terlebih dahulu.","warning");
+        return;
+    }
+
+    document.getElementById("processAmount").innerText =
+        "IDR " + amount.toLocaleString("id-ID");
+
+    const bankDetail = document.getElementById("bankDetail");
+    const qrisArea = document.getElementById("qrisArea");
+
+    if(bank === "QRIS"){
+        bankDetail.innerHTML = `
+            <b>Metode:</b> QRIS<br>
+            <b>Nominal:</b> IDR ${amount.toLocaleString("id-ID")}<br>
+            <b>Bonus:</b> ${bonus}
+        `;
+
+        qrisArea.style.display = "block";
+    }else{
+        const data = bankAccounts[bank];
+
+        bankDetail.innerHTML = `
+            <b>Bank:</b> ${data.bank}<br>
+            <b>No Rekening:</b> ${data.rekening}<br>
+            <b>Atas Nama:</b> ${data.nama}<br>
+            <b>Nominal:</b> IDR ${amount.toLocaleString("id-ID")}<br>
+            <b>Bonus:</b> ${bonus}
+        `;
+
+        qrisArea.style.display = "none";
+    }
+
+    showPage("depositProcessPage","app");
+};
+
+  let selectedDepBank = "";
+let selectedDepBonus = "Tanpa Bonus";
+
+window.toggleDepList = function(id){
+    document.querySelectorAll(".dep-list").forEach(list => {
+        if(list.id !== id){
+            list.classList.remove("show");
+        }
+    });
+
+    document.getElementById(id).classList.toggle("show");
+};
+
+window.selectDepBank = function(value, label){
+    selectedDepBank = value;
+    document.getElementById("depBankText").innerText = label;
+    document.getElementById("bankListBox").classList.remove("show");
+};
+
+window.selectDepBonus = function(value, label){
+    selectedDepBonus = value;
+    document.getElementById("depBonusText").innerText = label;
+    document.getElementById("bonusListBox").classList.remove("show");
+};
+
+const nominal = document.getElementById("depositNominal");
+
+if(nominal){
+    nominal.addEventListener("input", function(){
+        let angka = this.value.replace(/[^0-9]/g,"");
+
+        if(angka === ""){
+            this.value = "";
+            return;
+        }
+
+        this.value = "Rp " + Number(angka).toLocaleString("id-ID");
+    });
+}
+
+  window.openWithdrawPage = function(){
+
+    const savedUser =
+        JSON.parse(localStorage.getItem("registeredUser"));
+
+    if(!savedUser){
+        showToast(
+            "Data Tidak Ditemukan",
+            "Silakan login atau daftar terlebih dahulu.",
+            "warning"
+        );
+        return;
+    }
+
+    const saldo = Number(savedUser.saldo || 0);
+
+    document.getElementById("withdrawSaldo").innerText =
+        saldo.toLocaleString("id-ID");
+
+    document.getElementById("withdrawBankInfo").innerHTML = `
+        <b>Metode Terdaftar:</b> ${savedUser.payment || "-"}<br>
+        <b>Nama Pemilik:</b> ${savedUser.owner || "-"}<br>
+        <b>No Rekening / E-Wallet:</b> ${savedUser.rekening || "-"}
+    `;
+
+    showPage("withdrawPage","app");
+};
+
+const withdrawNominal =
+    document.getElementById("withdrawNominal");
+
+if(withdrawNominal){
+
+    withdrawNominal.addEventListener("input", function(){
+
+        let angka = this.value.replace(/[^0-9]/g,"");
+
+        if(angka === ""){
+            this.value = "";
+            return;
+        }
+
+        this.value =
+            "Rp " + Number(angka).toLocaleString("id-ID");
+
+    });
+
+}
+
+window.submitWithdraw = function(){
+
+    const savedUser =
+        JSON.parse(localStorage.getItem("registeredUser"));
+
+    const amountRaw =
+        document.getElementById("withdrawNominal")
+        .value
+        .replace(/[^0-9]/g,"");
+
+    const amount = Number(amountRaw);
+    const saldo = Number(savedUser?.saldo || 0);
+
+    if(!amount || amount < 10000){
+        showToast(
+            "Nominal Tidak Valid",
+            "Minimal tarik dana Rp 10.000.",
+            "warning"
+        );
+        return;
+    }
+
+    if(amount > saldo){
+        showToast(
+            "Saldo Tidak Cukup",
+            "Nominal penarikan melebihi saldo utama.",
+            "error"
+        );
+        return;
+    }
+
+    savedUser.saldo = saldo - amount;
+
+    localStorage.setItem(
+        "registeredUser",
+        JSON.stringify(savedUser)
+    );
+
+    showToast(
+        "Penarikan Diproses",
+        "Permintaan tarik dana berhasil dikirim.",
+        "success"
+    );
+
+    updateLoginUI();
+    window.updateSaldo();
+
+    setTimeout(() => {
+        showPage("homePage","home");
+    }, 1000);
+};
+
+  window.submitDepositProof = function(){
+
+    const proof = document.getElementById("depProof").files[0];
+
+    if(!proof){
+        showToast(
+            "Bukti Belum Ada",
+            "Silakan upload bukti pembayaran terlebih dahulu.",
+            "warning"
+        );
+        return;
+    }
+
+    const amountRaw =
+        document.getElementById("processAmount")
+        .innerText
+        .replace(/[^0-9]/g,"");
+
+    const amount = Number(amountRaw);
+
+    const savedUser =
+        JSON.parse(localStorage.getItem("registeredUser")) || {};
+
+    savedUser.saldo =
+        Number(savedUser.saldo || 0) + amount;
+
+    localStorage.setItem(
+        "registeredUser",
+        JSON.stringify(savedUser)
+    );
+
+    showToast(
+        "Deposit Berhasil",
+        "Saldo berhasil masuk ke akun Anda.",
+        "success"
+    );
+
+    updateLoginUI();
+    window.updateSaldo();
+
+    setTimeout(() => {
+        showPage("homePage","home");
+    }, 1000);
+};
+
+window.openGameMenu = function(type){
+
+    const isLogin =
+        localStorage.getItem("isLogin") === "true";
+
+    if(!isLogin){
+        showToast(
+            "Akses Ditolak",
+            "Kamu belum login atau belum memiliki akun.",
+            "warning"
+        );
+        return;
+    }
+
+    if(type === "slot"){
+        showPage("slotPage","game");
+        return;
+    }
+
+    showToast(
+        "Maintenance",
+        "Provider ini sedang maintenance.",
+        "warning"
+    );
+};
+
+window.showMaintenance = function(){
+    showToast(
+        "Maintenance",
+        "Provider ini sedang maintenance.",
+        "warning"
+    );
+};
+
+window.playSlotGame = function(){
+
+    const user =
+        JSON.parse(localStorage.getItem("registeredUser")) || {};
+
+    const saldo = Number(user.saldo || 0);
+
+    if(saldo <= 0){
+        showToast(
+            "Saldo Tidak Cukup",
+            "Anda tidak memiliki saldo untuk bermain.",
+            "warning"
+        );
+        return;
+    }
+
+    window.location.href = "https://wd189vvip.my.id/mobile/index.php?page=slot_pragmatic";
+};
 
     window.generateCaptcha();
     renderPaymentList();
